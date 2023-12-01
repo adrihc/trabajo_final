@@ -27,7 +27,6 @@
                             <Span>Graphic Designer</Span>
                             <Button>Send Message</Button>
                         </div>
-
                     </div>
 
                     <div class="personas" id="persona2">
@@ -136,7 +135,6 @@ left: 40px;
     height: 700px;
     background-color: rgb(243, 246, 250);
     border: 1px solid rgb(211, 214, 218);
-    margin-bottom: 10%;
 }
 
 .circle-body#circle-body-buttons button {

@@ -1,6 +1,6 @@
 <template>
     <div class="body_divisions">
-        <RouterLink to="/alerts">
+        <RouterLink to="/alerts" style="background-color: white;">
             <div class="zone" id="alerts">
                 <img src="..\assets\Layer 2.png" alt="" class="layer_2">
                 <img src="..\assets\warnings-off2.png" alt="" class="zoneImg">
@@ -10,7 +10,7 @@
             </div>
         </RouterLink>
 
-        <RouterLink to="/reminder">
+        <RouterLink to="/reminder" style="background-color: white;">
             <div class="zone">
                 <img src="..\assets\Layer 2.png" alt="" class="layer_2">
                 <img src="..\assets\reminders-calendar.png" alt="" class="zoneImg">
@@ -19,7 +19,7 @@
                 <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="reminder_tr">
             </div>
         </RouterLink>
-        <RouterLink to="/circle">
+        <RouterLink to="/circle" style="background-color: white;">
             <div class="zone">
                 <img src="..\assets\Layer 2.png" alt="" class="layer_2">
                 <img src="..\assets\ties2.png" alt="" class="zoneImg">
@@ -59,6 +59,8 @@
 </template>
 
 <style>
+
+
 .body_divisions {
     display: grid;
     row-gap: 0px;

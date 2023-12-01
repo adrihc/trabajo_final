@@ -2,10 +2,8 @@
     <div class="header">
         <header>
             <div class="header_div" id="brand_logo">
-                <RouterLink to="/">
-                
+                <RouterLink to="/" style="background-color: white;">
                     <img src="..\assets\logo-easy-connect_SBS.png" alt="" id="logo">
-                
                 </RouterLink> 
             </div>
             <div class="header_div" id="buttons">
@@ -56,6 +54,9 @@ header {
     min-width: 805px;
 }
 
+#logo{
+    height: 100%;
+}
 @media(max-width:620px) {
     header {
         min-width: 1105px;
