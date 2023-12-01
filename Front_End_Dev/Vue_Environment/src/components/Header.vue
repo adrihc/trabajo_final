@@ -4,41 +4,41 @@
             <div class="header_div" id="brand_logo">
                 <RouterLink to="/" style="background-color: white;">
                     <img src="..\assets\logo-easy-connect_SBS.png" alt="" id="logo">
-                </RouterLink> 
+                </RouterLink>
             </div>
             <div class="header_div" id="buttons">
 
-            <div id="profile">
-                <img src="..\assets\senior.png" alt="">
-                <div class="text_to_hide">
-                    <b>Cordelia Carpenter</b>
+                <div id="profile">
+                    <img src="..\assets\senior.png" alt="">
+                    <div class="text_to_hide">
+                        <b>Cordelia Carpenter</b>
+                    </div>
+
                 </div>
+                <div id="settings">
+                    <img src="..\assets\config.png" alt="">
+                    <div class="text_to_hide">
+                        <b>SETTINGS</b>
+                    </div>
+                    
+                </div>
+                <div id="dot">
+                    <img src="..\assets\dot3.png" alt="">
+                </div>
+                <RouterLink to="/" style="background-color: white;">
+                    <div id="logout">
+                        <img src="..\assets\1419365876_on-off.png" alt="">
+                        <div class="text_to_hide">
+                            <b>LOGOUT</b>
+                        </div>
+                    </div>
+                </RouterLink>
 
             </div>
-            <div id="settings">
-                <img src="..\assets\config.png" alt="">
-                <div class="text_to_hide">
-                    <b>SETTINGS</b>
-                </div>
-
-            </div>
-            <div id="dot">
-                <img src="..\assets\dot3.png" alt="">
-            </div>
-            <div id="logout">
-                <img src="..\assets\1419365876_on-off.png" alt="">
-                <div class="text_to_hide">
-                    <b>LOGOUT</b>
-                </div>
-
-            </div>
-        </div>
-    </header>
+        </header>
     </div>
 </template>
 <style>
-
-
 /* Todo el header */
 
 header {
@@ -54,9 +54,10 @@ header {
     min-width: 805px;
 }
 
-#logo{
+#logo {
     height: 100%;
 }
+
 @media(max-width:620px) {
     header {
         min-width: 1105px;
@@ -110,6 +111,7 @@ div {
     align-items: center;
     margin-left: 2%;
     margin-right: 2%;
+    height: 100%;
 }
 
 #settings img,
@@ -157,8 +159,4 @@ div {
         width: 1400px;
     }
 }
-
-
-
-
 </style>

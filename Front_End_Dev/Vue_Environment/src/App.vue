@@ -9,7 +9,7 @@ import HomeView from './views/HomeView.vue';
 <template>
   <div id="home-view">
   <HomeView />
-  <RouterView />
+  <router-view />
   </div>
  
 
@@ -37,4 +37,5 @@ import HomeView from './views/HomeView.vue';
   display: flex;
   flex-direction: column;
 }
+
 </style>
