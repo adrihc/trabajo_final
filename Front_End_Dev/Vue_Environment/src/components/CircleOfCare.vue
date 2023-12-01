@@ -3,8 +3,6 @@
         <div class="slicer-circle" id="header-circle">
             <img src="..\assets\ties2.png" alt="">
             <span>CIRCLE OF CARE</span>
-
-
         </div>
 
         <div class="slicer-circle" id="body-circle">
@@ -87,11 +85,8 @@
 /* Slicer - Circle of care  */
 
 .slicers#circle-of-care {
-    position: relative;
-    top: 140px;
     display: flex;
     flex-direction: column;
-    margin-top: 1%;
 }
 
 @media(max-width:1000px) {

@@ -126,7 +126,7 @@
     color: rgb(141, 142, 153);
     font-size: 30px;
     padding-top: 0.15%;
-    padding-right: 30%;
+    padding-right: 34%;
     min-width: 300px;
 }
 
@@ -150,8 +150,7 @@
 .slicers#reminders-calendar {
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 100px;
+
 }
 
 @media(max-width: 1000px) {

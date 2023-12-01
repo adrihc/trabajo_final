@@ -1,10 +1,14 @@
 <template>
     <div class="header">
         <header>
-        <div class="header_div" id="brand_logo">
-            <img src="..\assets\logo-easy-connect_SBS.png" alt="" id="logo">
-        </div>
-        <div class="header_div" id="buttons">
+            <div class="header_div" id="brand_logo">
+                <RouterLink to="/">
+                
+                    <img src="..\assets\logo-easy-connect_SBS.png" alt="" id="logo">
+                
+                </RouterLink> 
+            </div>
+            <div class="header_div" id="buttons">
 
             <div id="profile">
                 <img src="..\assets\senior.png" alt="">
@@ -152,6 +156,7 @@ div {
         width: 1400px;
     }
 }
+
 
 
 

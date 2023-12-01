@@ -1,26 +1,34 @@
 <template>
     <div class="body_divisions">
-        <div class="zone" id="alerts">
-            <img src="..\assets\Layer 2.png" alt="" class="layer_2">
-            <img src="..\assets\warnings-off2.png" alt="" class="zoneImg">
-            <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="alerts_ellipse">
-            <span>ALERTS AND MESSAGING</span>
-            <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="alerts_tr">
-        </div>
-        <div class="zone">
-            <img src="..\assets\Layer 2.png" alt="" class="layer_2">
-            <img src="..\assets\reminders-calendar.png" alt="" class="zoneImg">
-            <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="reminder">
-            <span>REMINDERS CALENDAR</span>
-            <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="reminder_tr">
-        </div>
-        <div class="zone">
-            <img src="..\assets\Layer 2.png" alt="" class="layer_2">
-            <img src="..\assets\ties2.png" alt="" class="zoneImg">
-            <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="circle">
-            <span>CIRCLE OF CARE</span>
-            <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="circle_tr">
-        </div>
+        <RouterLink to="/alerts">
+            <div class="zone" id="alerts">
+                <img src="..\assets\Layer 2.png" alt="" class="layer_2">
+                <img src="..\assets\warnings-off2.png" alt="" class="zoneImg">
+                <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="alerts_ellipse">
+                <span>ALERTS AND MESSAGING</span>
+                <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="alerts_tr">
+            </div>
+        </RouterLink>
+
+        <RouterLink to="/reminder">
+            <div class="zone">
+                <img src="..\assets\Layer 2.png" alt="" class="layer_2">
+                <img src="..\assets\reminders-calendar.png" alt="" class="zoneImg">
+                <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="reminder">
+                <span>REMINDERS CALENDAR</span>
+                <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="reminder_tr">
+            </div>
+        </RouterLink>
+        <RouterLink to="/circle">
+            <div class="zone">
+                <img src="..\assets\Layer 2.png" alt="" class="layer_2">
+                <img src="..\assets\ties2.png" alt="" class="zoneImg">
+                <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="circle">
+                <span>CIRCLE OF CARE</span>
+                <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="circle_tr">
+            </div>
+        </RouterLink>
+
         <div class="zone" id="daily">
             <img src="..\assets\Layer 2.png" alt="" class="layer_2">
             <img src="..\assets\daily-care-o-gram.png" alt="" class="zoneImg">
@@ -51,7 +59,6 @@
 </template>
 
 <style>
-
 .body_divisions {
     display: grid;
     row-gap: 0px;
@@ -215,5 +222,4 @@
     bottom: 98px;
     right: 42px;
 }
-
 </style>

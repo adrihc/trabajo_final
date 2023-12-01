@@ -1,5 +1,4 @@
 <template>
-
     <div class="slicers" id="alerts-and-messaging">
             <div class="slicer-alert-content" id="header-alert">
                 <img src="..\assets\warnings-off2.png" alt="">
@@ -128,8 +127,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 0%;
-    padding-left: 0%;
+
 }
 
 @media (max-width: 950px) {
@@ -190,16 +188,16 @@
 .slicer-alert-content#header-alert span {
     color: rgb(141, 142, 153);
     font-size: 30px;
-    padding-left: 8%;
-    padding-top: 0.15%;
+    padding-top: 0.15% !important;
+    padding-left: 7% !important;
+    min-width: 300px;
 }
 
 .slicer-alert-content#header-alert img {
     position: relative;
-    top: 2px;
-    left: 65px;
-    width: 45px;
-    height: 45px;
+    padding-left: 0% !important;
+    left: 40px;
+    width: 50px;
 }
 
 

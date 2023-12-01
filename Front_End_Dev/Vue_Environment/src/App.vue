@@ -2,10 +2,16 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue';
+import HomeView from './views/HomeView.vue';
+
 </script>
 
 <template>
+  <div id="home-view">
+  <HomeView />
   <RouterView />
+  </div>
+ 
 
   
   <!--
@@ -26,6 +32,9 @@ import Header from './components/Header.vue';
   
 </template>
 
-<style scoped>
-
+<style>
+#home-view{
+  display: flex;
+  flex-direction: column;
+}
 </style>
