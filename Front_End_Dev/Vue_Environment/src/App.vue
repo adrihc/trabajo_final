@@ -8,8 +8,8 @@ import HomeView from './views/HomeView.vue';
 
 <template>
   <div id="home-view">
-  <HomeView />
-  <router-view />
+    <home-view />
+    <router-view />
   </div>
  
 
@@ -32,8 +32,8 @@ import HomeView from './views/HomeView.vue';
   
 </template>
 
-<style>
-#home-view{
+<style scoped>
+#home-view {
   display: flex;
   flex-direction: column;
 }

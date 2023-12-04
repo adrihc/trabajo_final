@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+
+import HomeView from '../views/HomeView.vue';
+</script>
+
 <template>
     <div class="slicers" id="circle-of-care">
         <div class="slicer-circle" id="header-circle">
@@ -80,7 +85,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 /* Slicer - Circle of care  */
 
 .slicers#circle-of-care {
@@ -291,3 +296,4 @@ left: 40px;
     font-weight: bold;
     font-size: larger;
 }</style>
+

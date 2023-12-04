@@ -10,12 +10,12 @@ import Zones from '../components/Zones.vue';
   <main>
     <Header />
     <div class="full-body">
-      <Zones />
+      <Zones/>
     </div>
   </main>
 </template>
 
-<style>
+<style scoped>
 
 main{
   display: flex;

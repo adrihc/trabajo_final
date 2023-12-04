@@ -1,3 +1,8 @@
+<script setup lang="ts">
+
+import HomeView from '../views/HomeView.vue';
+
+</script>
 <template>
     <div class="slicers" id="reminders-calendar">
         <div class="slicer-reminder-content" id="header-reminder">
@@ -107,7 +112,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 /* Slicer - Calendar reminder*/
 
 /* Calendar header */

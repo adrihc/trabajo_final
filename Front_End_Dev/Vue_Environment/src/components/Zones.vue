@@ -1,7 +1,7 @@
 <template>
     <div class="body_divisions">
         <RouterLink to="/alerts" style="background-color: white;">
-            <div class="zone" id="alerts">
+        <div @click="activeTab = Tabs.ALERTS" class="zone" :class="{actualTab: activeTab === Tabs.ALERTS}">
                 <img src="..\assets\Layer 2.png" alt="" class="layer_2">
                 <img src="..\assets\warnings-off2.png" alt="" class="zoneImg">
                 <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="alerts_ellipse">
@@ -10,8 +10,8 @@
             </div>
         </RouterLink>
 
-        <RouterLink to="/reminder" style="background-color: white;">
-            <div class="zone">
+        <RouterLink to="/calendar" style="background-color: white;" >
+            <div @click="activeTab = Tabs.CALENDAR" class="zone" :class="{actualTab: activeTab === Tabs.CALENDAR}">
                 <img src="..\assets\Layer 2.png" alt="" class="layer_2">
                 <img src="..\assets\reminders-calendar.png" alt="" class="zoneImg">
                 <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="reminder">
@@ -19,8 +19,8 @@
                 <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="reminder_tr">
             </div>
         </RouterLink>
-        <RouterLink to="/circle" style="background-color: white;">
-            <div class="zone">
+        <RouterLink to="/circle" style="background-color: white;" @click="activeTab = Tabs.CIRCLE">
+            <div @click="activeTab = Tabs.CIRCLE" class="zone" :class="{actualTab: activeTab === Tabs.CIRCLE}">
                 <img src="..\assets\Layer 2.png" alt="" class="layer_2">
                 <img src="..\assets\ties2.png" alt="" class="zoneImg">
                 <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="circle">
@@ -58,7 +58,31 @@
     </div>
 </template>
 
-<style>
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+enum Tabs {
+    CIRCLE,
+    ALERTS,
+    CALENDAR
+}
+
+const activeTab = ref<Tabs>(Tabs.ALERTS)
+//defineProps({
+//    color: {
+//        type: String,
+//        required: true
+//    }
+//})
+
+</script>
+
+<style scoped>
+
+.actualTab{
+    background-color: rgb(211, 211, 211) !important;
+    transform: 1.4s;
+}
 
 
 .body_divisions {
