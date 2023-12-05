@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
+import HomeView from '../views/EmptyView.vue';
+import LoginView from '../views/LoginView.vue';
+import AlertView from '../components/Alerts.vue';
+import ReminderView from '../components/Calendar.vue';
+import CircleView from '../components/CircleOfCare.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,13 +14,37 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/login',
+      name: 'login',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: AboutView
+      component: LoginView
     },
+    {
+      path: '/alerts',
+      name: 'alerts',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: AlertView
+    },
+    {
+      path: '/calendar',
+      name: 'calendar',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: ReminderView
+    },
+    {
+      path: '/circle',
+      name: 'circle-of-care',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: CircleView
+    }
   ]
 })
 

@@ -2,9 +2,7 @@
 import TheWelcome from '../components/TheWelcome.vue'
 import Header from '../components/Header.vue';
 import Zones from '../components/Zones.vue';
-import Alerts from '../components/Alerts.vue';
-import Calendar from '../components/Calendar.vue';
-import Circle from '../components/CircleOfCare.vue'
+
 
 </script>
 
@@ -12,15 +10,12 @@ import Circle from '../components/CircleOfCare.vue'
   <main>
     <Header />
     <div class="full-body">
-      <Zones />
-      <Alerts />
-      <Calendar />
-      <Circle />
+      <Zones/>
     </div>
   </main>
 </template>
 
-<style>
+<style scoped>
 
 main{
   display: flex;

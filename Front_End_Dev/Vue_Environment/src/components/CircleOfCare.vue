@@ -1,10 +1,13 @@
+<script lang="ts" setup>
+
+import HomeView from '../views/HomeView.vue';
+</script>
+
 <template>
     <div class="slicers" id="circle-of-care">
         <div class="slicer-circle" id="header-circle">
             <img src="..\assets\ties2.png" alt="">
             <span>CIRCLE OF CARE</span>
-
-
         </div>
 
         <div class="slicer-circle" id="body-circle">
@@ -29,7 +32,6 @@
                             <Span>Graphic Designer</Span>
                             <Button>Send Message</Button>
                         </div>
-
                     </div>
 
                     <div class="personas" id="persona2">
@@ -83,15 +85,12 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 /* Slicer - Circle of care  */
 
 .slicers#circle-of-care {
-    position: relative;
-    top: 140px;
     display: flex;
     flex-direction: column;
-    margin-top: 1%;
 }
 
 @media(max-width:1000px) {
@@ -141,7 +140,6 @@ left: 40px;
     height: 700px;
     background-color: rgb(243, 246, 250);
     border: 1px solid rgb(211, 214, 218);
-    margin-bottom: 10%;
 }
 
 .circle-body#circle-body-buttons button {
@@ -298,3 +296,4 @@ left: 40px;
     font-weight: bold;
     font-size: larger;
 }</style>
+

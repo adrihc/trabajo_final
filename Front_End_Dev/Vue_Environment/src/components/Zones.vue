@@ -1,26 +1,34 @@
 <template>
     <div class="body_divisions">
-        <div class="zone" id="alerts">
-            <img src="..\assets\Layer 2.png" alt="" class="layer_2">
-            <img src="..\assets\warnings-off2.png" alt="" class="zoneImg">
-            <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="alerts_ellipse">
-            <span>ALERTS AND MESSAGING</span>
-            <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="alerts_tr">
-        </div>
-        <div class="zone">
-            <img src="..\assets\Layer 2.png" alt="" class="layer_2">
-            <img src="..\assets\reminders-calendar.png" alt="" class="zoneImg">
-            <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="reminder">
-            <span>REMINDERS CALENDAR</span>
-            <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="reminder_tr">
-        </div>
-        <div class="zone">
-            <img src="..\assets\Layer 2.png" alt="" class="layer_2">
-            <img src="..\assets\ties2.png" alt="" class="zoneImg">
-            <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="circle">
-            <span>CIRCLE OF CARE</span>
-            <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="circle_tr">
-        </div>
+        <RouterLink to="/alerts" style="background-color: white;">
+        <div @click="activeTab = Tabs.ALERTS" class="zone" :class="{actualTab: activeTab === Tabs.ALERTS}">
+                <img src="..\assets\Layer 2.png" alt="" class="layer_2">
+                <img src="..\assets\warnings-off2.png" alt="" class="zoneImg">
+                <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="alerts_ellipse">
+                <span>ALERTS AND MESSAGING</span>
+                <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="alerts_tr">
+            </div>
+        </RouterLink>
+
+        <RouterLink to="/calendar" style="background-color: white;" >
+            <div @click="activeTab = Tabs.CALENDAR" class="zone" :class="{actualTab: activeTab === Tabs.CALENDAR}">
+                <img src="..\assets\Layer 2.png" alt="" class="layer_2">
+                <img src="..\assets\reminders-calendar.png" alt="" class="zoneImg">
+                <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="reminder">
+                <span>REMINDERS CALENDAR</span>
+                <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="reminder_tr">
+            </div>
+        </RouterLink>
+        <RouterLink to="/circle" style="background-color: white;" @click="activeTab = Tabs.CIRCLE">
+            <div @click="activeTab = Tabs.CIRCLE" class="zone" :class="{actualTab: activeTab === Tabs.CIRCLE}">
+                <img src="..\assets\Layer 2.png" alt="" class="layer_2">
+                <img src="..\assets\ties2.png" alt="" class="zoneImg">
+                <img src="..\assets\Ellipse 1.png" alt="" class="ellipse" id="circle">
+                <span>CIRCLE OF CARE</span>
+                <img src="..\assets\Layer 3.png" alt="" class="triangulo" id="circle_tr">
+            </div>
+        </RouterLink>
+
         <div class="zone" id="daily">
             <img src="..\assets\Layer 2.png" alt="" class="layer_2">
             <img src="..\assets\daily-care-o-gram.png" alt="" class="zoneImg">
@@ -50,7 +58,32 @@
     </div>
 </template>
 
-<style>
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+enum Tabs {
+    CIRCLE,
+    ALERTS,
+    CALENDAR
+}
+
+const activeTab = ref<Tabs>(Tabs.ALERTS)
+//defineProps({
+//    color: {
+//        type: String,
+//        required: true
+//    }
+//})
+
+</script>
+
+<style scoped>
+
+.actualTab{
+    background-color: rgb(211, 211, 211) !important;
+    transform: 1.4s;
+}
+
 
 .body_divisions {
     display: grid;
@@ -215,5 +248,4 @@
     bottom: 98px;
     right: 42px;
 }
-
 </style>

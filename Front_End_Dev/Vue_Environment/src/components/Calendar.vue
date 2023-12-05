@@ -1,3 +1,8 @@
+<script setup lang="ts">
+
+import HomeView from '../views/HomeView.vue';
+
+</script>
 <template>
     <div class="slicers" id="reminders-calendar">
         <div class="slicer-reminder-content" id="header-reminder">
@@ -107,7 +112,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 /* Slicer - Calendar reminder*/
 
 /* Calendar header */
@@ -126,7 +131,7 @@
     color: rgb(141, 142, 153);
     font-size: 30px;
     padding-top: 0.15%;
-    padding-right: 30%;
+    padding-right: 34%;
     min-width: 300px;
 }
 
@@ -150,8 +155,7 @@
 .slicers#reminders-calendar {
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 100px;
+
 }
 
 @media(max-width: 1000px) {
