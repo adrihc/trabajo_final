@@ -13,7 +13,7 @@
                     <input type="checkbox">
                 </div>
 
-                <div class="body-header" id="new-message" @click="activeMessageTab = MessageTab.NEWMESSAGE">
+                <div class="body-header" id="new-message" @click="show = true">
                     <img src="..\assets\Rectangle 2.png" alt="">
                     <span>New Message</span>
                 </div>
@@ -190,24 +190,6 @@
 
             </div>
 
-            <div class="new-message-tab" :class="{ activeMessageTab: activeMessageTab === MessageTab.NEWMESSAGE }">
-                <div class="new-message-bold-text">
-                    <span>Email</span>
-                    <span>Subject</span>
-                    <span>Content</span>
-                </div>
-                <div class="input-zone">
-                    <input type="text" placeholder="example@gmail.com">
-                    <input type="text" placeholder="Subject">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <div class="buttons-new-message">
-                        <button class="new-message-button" id="send">Send</button>
-                        <button class="new-message-button" id="cancel">Cancel</button>
-                    </div>
-                </div>
-
-            </div>
-
             <div class="alerts-body" id="messages" :class="{ activeMessageTab: activeMessageTab === MessageTab.SENT }">
                 <div class="message" @click="activeUser = Activation.JOHN"
                     :class="{ active: activeUser === Activation.JOHN }">
@@ -366,13 +348,34 @@
         </div>
 
     </div>
+
+    <Transition name="bgAnimation">
+        <div v-if="show" class="blackBackground"
+            @click="show = false"></div>
+    </Transition>
+    <Transition name="newMessageAnimation">
+    <div v-if="show" class="activeNewMessageTab">
+        <div class="input-zone">
+            <input type="text" placeholder="example@gmail.com" class="input-top">
+            <input type="text" placeholder="Subject" >
+            <textarea name="" id="" cols="30" rows="10" class="input-bot" placeholder="Your text here..."></textarea>
+
+        </div>
+            <div class="buttons-new-message">
+                <button class="new-message-button" id="send">Send</button>
+                <button class="new-message-button" id="cancel"
+                    @click="show = false">Cancel</button>
+            </div>
+    </div>
+    </Transition>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+const show = ref(false)
+
 enum MessageTab {
-    NEWMESSAGE,
     INBOX,
     SENT
 }
@@ -387,45 +390,76 @@ enum Activation {
 const activeUser = ref<Activation>(Activation.JOHN)
 </script>
 <style scoped>
-
 /* Zona de New message, recolocar más tarde*/
+.newMessageAnimation-enter-active{
+    animation: newMessageFade 0.75s;
+}
+.newMessageAnimation-leave-active{
+    animation: newMessageFade 0.35s reverse;
+}
+@keyframes newMessageFade {
+    0%{
+        opacity: 0%;    
+    }
+    100%{
+        opacity: 100%;
+   }
+}
+.bgAnimation-enter-active{
+    animation: bgFade 0.75s;
+}
+.bgAnimation-leave-active{
+    animation: bgFade 0.35s reverse;
+}
+@keyframes bgFade {
+    0%{
+        opacity: 0%;    
+    }
+    50%{
+        opacity: 50%;
+   }
+}
 
 .new-message-tab {
     display: none;
     flex-direction: row;
 }
 
-.new-message-bold-text {
-    display: flex;
-    flex-direction: column;
-    margin-top: 3%;
-    margin-left: 4%;
-}
-
-.new-message-bold-text span {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
 .input-zone {
-    margin-top: 3%;
-    margin-left: 7%;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 525px;
 }
 
 .input-zone input,
 textarea {
-    margin-top: 12px;
-    width: 625px;
+    width: 100%;
+    border: 0;
+    font-size: 17px;
+}
+.input-zone input{
+    height: 50px;
+    padding-left: 10px;
 }
 
-.input-zone textarea{
-    height: 250px;
+.input-zone input,textarea:focus{
+    outline: none ;
+}
+
+.input-top{
+    border-radius: 15px 20px 0px 0px;
+}
+.input-bot{
+    border-radius: 0px 0px 20px 20px;
+}
+.input-zone textarea {
+    padding-left: 10px;
+    height: 100%;
     resize: none;
 }
 
-.buttons-new-message{
+.buttons-new-message {
     margin-top: 15px;
     height: 35px;
     width: 300px;
@@ -446,6 +480,24 @@ textarea {
     border: none;
     color: white;
     font-weight: bold;
+}
+
+.activeNewMessageTab {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    width: 800px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blackBackground {
+    position: fixed;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background-color: black;
 }
 
 /* Fin de la zona de new message, borrar más tarde */
@@ -624,7 +676,7 @@ textarea {
     display: flex;
     flex-direction: row;
     align-items: center;
-    cursor:default;
+    cursor: default;
 }
 
 .body-header#new-message img {
@@ -860,4 +912,5 @@ textarea {
     color: rgb(156, 157, 160);
     font-weight: bold;
     background-color: rgb(243, 246, 250);
-}</style>
+}
+</style>
