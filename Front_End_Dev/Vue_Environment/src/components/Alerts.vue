@@ -1,190 +1,382 @@
 <template>
     <div class="slicers" id="alerts-and-messaging">
-            <div class="slicer-alert-content" id="header-alert">
-                <img src="..\assets\warnings-off2.png" alt="">
-                <span>ALERTS AND MESSAGING</span>
+        <div class="slicer-alert-content" id="header-alert">
+            <img src="..\assets\warnings-off2.png" alt="">
+            <span>ALERTS AND MESSAGING</span>
+        </div>
+
+        <!-- Body-Alerts and messaging -->
+
+        <div class="slicer-alert-content" id="alert-body">
+            <div class="alerts-body" id="alerts-body-header">
+                <div class="body-header" id="checkbox-space">
+                    <input type="checkbox">
+                </div>
+
+                <div class="body-header" id="new-message" @click="activeMessageTab = MessageTab.NEWMESSAGE">
+                    <img src="..\assets\Rectangle 2.png" alt="">
+                    <span>New Message</span>
+                </div>
+
+                <div class="body-header" id="buttons">
+                    <button class="button-header" @click="activeMessageTab = MessageTab.INBOX">Inbox</button>
+                    <img src="..\assets\Ellipse 1.png" alt="">
+                    <button class="button-header" @click="activeMessageTab = MessageTab.SENT">Sent</button>
+                </div>
+
+                <div class="body-header" id="search-bar">
+                    <input type="search" placeholder="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
             </div>
 
-            <!-- Body-Alerts and messaging -->
+            <div class="alerts-body" id="messages" :class="{ activeMessageTab: activeMessageTab === MessageTab.INBOX }">
+                <div class="message" @click="activeUser = Activation.JOHN"
+                    :class="{ active: activeUser === Activation.JOHN }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.JOHN }">
+                    <span class="message-content" id="name">John Snow</span>
+                    <span class="message-content" id="subject">Hi Friend!!</span>
+                    <span class="message-content" id="date">12 April 2014</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.JOHN }">&#10095;</span>
+                    </Transition>
+                </div>
 
-            <div class="slicer-alert-content" id="alert-body">
-                <div class="alerts-body" id="alerts-body-header">
-                    <div class="body-header" id="checkbox-space">
-                        <input type="checkbox">
-                    </div>
 
-                    <div class="body-header" id="new-message">
-                        <img src="..\assets\Rectangle 2.png" alt="">
-                        <span>New Message</span>
-                    </div>
-
-                    <div class="body-header" id="buttons">
-                        <button class="button-header">Inbox</button>
-                        <img src="..\assets\Ellipse 1.png" alt="">
-                        <button class="button-header">Sent</button>
-                    </div>
-
-                    <div class="body-header" id="search-bar">
-                        <input type="search" placeholder="Search">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd" />
-                        </svg>
+                <div class="content" :class="{ displayed: activeUser === Activation.JOHN }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
                     </div>
                 </div>
 
-                <div class="alerts-body" id="messages">
+                <div class="message" @click="activeUser = Activation.RICHARD"
+                    :class="{ active: activeUser === Activation.RICHARD }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.RICHARD }">
+                    <span class="message-content" id="name">Richard Chaning</span>
+                    <span class="message-content" id="subject">Memorial Clinic</span>
+                    <span class="message-content" id="date">12 April 2014</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.RICHARD }">&#10095;</span>
+                    </Transition>
+                    <div class="flecha"></div>
+                </div>
 
-                    <div class="message" @click="activeUser = Activation.JOHN" :class="{active: activeUser === Activation.JOHN}">
-                        <input type="checkbox" class="message-content" id="checkbox-message">
-                        <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened" :class="{headerOpen: activeUser === Activation.JOHN}">
-                        <span class="message-content" id="name">John Snow</span>
-                        <span class="message-content" id="subject">Hi Friend!!</span>
-                        <span class="message-content" id="date">12 April 2014</span>
-                        <Transition>
-                            <span class="flecha-desplegable" :class="{desplegada: activeUser === Activation.JOHN}">&#10095;</span>
-                        </Transition>
-                    </div>
-
-
-                    <div class="content" :class="{displayed: activeUser === Activation.JOHN}">
-                        <h3>Hi Friend!!!</h3>
-                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                        </span>
-                        <div class="message-body-elements" id="message-buttons">
-                            <button class="message-body" id="reply">REPLY</button>
-                            <button class="message-body" id="delete">DELETE</button>
-                        </div>
-                    </div>
-
-                    <div class="message"  @click="activeUser = Activation.RICHARD" :class="{active: activeUser === Activation.RICHARD}">
-                        <input type="checkbox" class="message-content" id="checkbox-message">
-                        <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened" :class="{headerOpen: activeUser === Activation.RICHARD}">
-                        <span class="message-content" id="name">Richard Chaning</span>
-                        <span class="message-content" id="subject">Memorial Clinic</span>
-                        <span class="message-content" id="date">12 April 2014</span>
-                        <Transition>
-                            <span class="flecha-desplegable" :class="{desplegada: activeUser === Activation.RICHARD}">&#10095;</span>
-                        </Transition>
-                        <div class="flecha"></div>
-                    </div>
-
-                    <div class="content" :class="{displayed: activeUser === Activation.RICHARD}">
-                        <h3>Hi Friend!!!</h3>
-                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                        </span>
-                        <div class="message-body-elements" id="message-buttons">
-                            <button class="message-body" id="reply">REPLY</button>
-                            <button class="message-body" id="delete">DELETE</button>
-                        </div>
-                    </div>
-
-                    <div class="message" @click="activeUser = Activation.ELISABETH" :class="{active: activeUser === Activation.ELISABETH}">
-                        <input type="checkbox" class="message-content" id="checkbox-message">
-                        <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened" :class="{headerOpen: activeUser === Activation.ELISABETH}">
-                        <span class="message-content" id="name">Elisabeth Bale</span>
-                        <span class="message-content" id="subject">From Conneticut</span>
-                        <span class="message-content" id="date">21 June 2013</span>
-                        <Transition>
-                            <span class="flecha-desplegable" :class="{desplegada: activeUser === Activation.ELISABETH}">&#10095;</span>
-                        </Transition>
-                    </div>
-
-                    <div class="content" :class="{displayed: activeUser === Activation.ELISABETH}">
-                        <h3>Hi Friend!!!</h3>
-                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                        </span>
-                        <div class="message-body-elements" id="message-buttons">
-                            <button class="message-body" id="reply">REPLY</button>
-                            <button class="message-body" id="delete">DELETE</button>
-                        </div>
-                    </div>
-
-                    <div class="message" @click="activeUser = Activation.SARAH" :class="{active: activeUser === Activation.SARAH}">
-                        <input type="checkbox" class="message-content" id="checkbox-message">
-                        <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened" :class="{headerOpen: activeUser === Activation.SARAH}">
-                        <span class="message-content" id="name">Sarah Connor</span>
-                        <span class="message-content" id="subject">Cyberdyne Systems</span>
-                        <span class="message-content" id="date">20 June 2013</span>
-                        <Transition>
-                            <span class="flecha-desplegable" :class="{desplegada: activeUser === Activation.SARAH}">&#10095;</span>
-                        </Transition>
-                    </div>
-
-                    <div class="content" :class="{displayed: activeUser === Activation.SARAH}">
-                        <h3>Hi Friend!!!</h3>
-                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                        </span>
-                        <div class="message-body-elements" id="message-buttons">
-                            <button class="message-body" id="reply">REPLY</button>
-                            <button class="message-body" id="delete">DELETE</button>
-                        </div>
-                    </div>
-
-
-                    <div class="message" @click="activeUser = Activation.ARTURO" :class="{active: activeUser === Activation.ARTURO}">
-                        <input type="checkbox" class="message-content" id="checkbox-message">
-                        <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened" :class="{headerOpen: activeUser === Activation.ARTURO}">
-                        <span class="message-content" id="name">Arturo González</span>
-                        <span class="message-content" id="subject">Recordatorio Consulta</span>
-                        <span class="message-content" id="date">20 June 2013</span>
-                        <Transition>
-                            <span class="flecha-desplegable" :class="{desplegada: activeUser === Activation.ARTURO}">&#10095;</span>
-                        </Transition>
+                <div class="content" :class="{ displayed: activeUser === Activation.RICHARD }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
                     </div>
                 </div>
 
-                <div class="content" :class="{displayed: activeUser === Activation.ARTURO}">
-                        <h3>Hi Friend!!!</h3>
-                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                        </span>
-                        <div class="message-body-elements" id="message-buttons">
-                            <button class="message-body" id="reply">REPLY</button>
-                            <button class="message-body" id="delete">DELETE</button>
-                        </div>
+                <div class="message" @click="activeUser = Activation.ELISABETH"
+                    :class="{ active: activeUser === Activation.ELISABETH }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.ELISABETH }">
+                    <span class="message-content" id="name">Elisabeth Bale</span>
+                    <span class="message-content" id="subject">From Conneticut</span>
+                    <span class="message-content" id="date">21 June 2013</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.ELISABETH }">&#10095;</span>
+                    </Transition>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.ELISABETH }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
                     </div>
+                </div>
+
+                <div class="message" @click="activeUser = Activation.SARAH"
+                    :class="{ active: activeUser === Activation.SARAH }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.SARAH }">
+                    <span class="message-content" id="name">Sarah Connor</span>
+                    <span class="message-content" id="subject">Cyberdyne Systems</span>
+                    <span class="message-content" id="date">20 June 2013</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.SARAH }">&#10095;</span>
+                    </Transition>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.SARAH }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
+
+
+                <div class="message" @click="activeUser = Activation.ARTURO"
+                    :class="{ active: activeUser === Activation.ARTURO }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.ARTURO }">
+                    <span class="message-content" id="name">Arturo González</span>
+                    <span class="message-content" id="subject">Recordatorio Consulta</span>
+                    <span class="message-content" id="date">20 June 2013</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.ARTURO }">&#10095;</span>
+                    </Transition>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.ARTURO }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
 
 
                 <div class="alerts-body" id="previous">
                     <button>5 Previous Messages</button>
                 </div>
 
+            </div>
+
+            <div class="new-message-tab" :class="{ activeMessageTab: activeMessageTab === MessageTab.NEWMESSAGE }">
+                <div class="new-message-bold-text">
+                    <span>Email</span>
+                    <span>Subject</span>
+                    <span>Content</span>
+                </div>
+                <div class="input-zone">
+                    <input type="text" placeholder="example@gmail.com">
+                    <input type="text" placeholder="Subject">
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <div class="buttons-new-message">
+                        <button class="new-message-button" id="send">Send</button>
+                        <button class="new-message-button" id="cancel">Cancel</button>
+                    </div>
+                </div>
 
             </div>
 
+            <div class="alerts-body" id="messages" :class="{ activeMessageTab: activeMessageTab === MessageTab.SENT }">
+                <div class="message" @click="activeUser = Activation.JOHN"
+                    :class="{ active: activeUser === Activation.JOHN }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.JOHN }">
+                    <span class="message-content" id="name">John Snow</span>
+                    <span class="message-content" id="subject">Hi Friend!!</span>
+                    <span class="message-content" id="date">12 April 2014</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.JOHN }">&#10095;</span>
+                    </Transition>
+                </div>
+
+
+                <div class="content" :class="{ displayed: activeUser === Activation.JOHN }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
+
+                <div class="message" @click="activeUser = Activation.RICHARD"
+                    :class="{ active: activeUser === Activation.RICHARD }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.RICHARD }">
+                    <span class="message-content" id="name">Richard Chaning</span>
+                    <span class="message-content" id="subject">Memorial Clinic</span>
+                    <span class="message-content" id="date">12 April 2014</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.RICHARD }">&#10095;</span>
+                    </Transition>
+                    <div class="flecha"></div>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.RICHARD }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
+
+                <div class="message" @click="activeUser = Activation.ELISABETH"
+                    :class="{ active: activeUser === Activation.ELISABETH }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.ELISABETH }">
+                    <span class="message-content" id="name">Elisabeth Bale</span>
+                    <span class="message-content" id="subject">From Conneticut</span>
+                    <span class="message-content" id="date">21 June 2013</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.ELISABETH }">&#10095;</span>
+                    </Transition>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.ELISABETH }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
+
+                <div class="message" @click="activeUser = Activation.SARAH"
+                    :class="{ active: activeUser === Activation.SARAH }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.SARAH }">
+                    <span class="message-content" id="name">Sarah Connor</span>
+                    <span class="message-content" id="subject">Cyberdyne Systems</span>
+                    <span class="message-content" id="date">20 June 2013</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.SARAH }">&#10095;</span>
+                    </Transition>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.SARAH }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
+
+
+                <div class="message" @click="activeUser = Activation.ARTURO"
+                    :class="{ active: activeUser === Activation.ARTURO }">
+                    <input type="checkbox" class="message-content" id="checkbox-message">
+                    <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
+                        :class="{ headerOpen: activeUser === Activation.ARTURO }">
+                    <span class="message-content" id="name">Arturo González</span>
+                    <span class="message-content" id="subject">Recordatorio Consulta</span>
+                    <span class="message-content" id="date">20 June 2013</span>
+                    <Transition>
+                        <span class="flecha-desplegable"
+                            :class="{ desplegada: activeUser === Activation.ARTURO }">&#10095;</span>
+                    </Transition>
+                </div>
+
+                <div class="content" :class="{ displayed: activeUser === Activation.ARTURO }">
+                    <h3>Hi Friend!!!</h3>
+                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                    </span>
+                    <div class="message-body-elements" id="message-buttons">
+                        <button class="message-body" id="reply">REPLY</button>
+                        <button class="message-body" id="delete">DELETE</button>
+                    </div>
+                </div>
+
+
+                <div class="alerts-body" id="previous">
+                    <button>5 Previous Messages</button>
+                </div>
+
+            </div>
         </div>
+
+    </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+enum MessageTab {
+    NEWMESSAGE,
+    INBOX,
+    SENT
+}
+const activeMessageTab = ref<MessageTab>(MessageTab.INBOX)
 enum Activation {
     JOHN,
     RICHARD,
@@ -193,9 +385,72 @@ enum Activation {
     ARTURO
 }
 const activeUser = ref<Activation>(Activation.JOHN)
-console.log(activeUser)
 </script>
 <style scoped>
+
+/* Zona de New message, recolocar más tarde*/
+
+.new-message-tab {
+    display: none;
+    flex-direction: row;
+}
+
+.new-message-bold-text {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    margin-left: 4%;
+}
+
+.new-message-bold-text span {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.input-zone {
+    margin-top: 3%;
+    margin-left: 7%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-zone input,
+textarea {
+    margin-top: 12px;
+    width: 625px;
+}
+
+.input-zone textarea{
+    height: 250px;
+    resize: none;
+}
+
+.buttons-new-message{
+    margin-top: 15px;
+    height: 35px;
+    width: 300px;
+}
+
+.new-message-button#send {
+    background-color: rgb(31, 219, 172);
+    width: 90px;
+    border: none;
+    color: rgb(20, 129, 102);
+    font-weight: bold;
+}
+
+.new-message-button#cancel {
+    margin-left: 20px;
+    background-color: rgb(255, 94, 94);
+    width: 90px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Fin de la zona de new message, borrar más tarde */
+
+
 
 /* Slicer de Alerts and Messaging*/
 
@@ -369,6 +624,7 @@ console.log(activeUser)
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor:default;
 }
 
 .body-header#new-message img {
@@ -438,13 +694,16 @@ console.log(activeUser)
 
 
 /* Opened message */
+.activeMessageTab {
+    display: flex !important;
+}
 
 .alerts-body#messages {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
-.active{
+.active {
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -569,10 +828,11 @@ console.log(activeUser)
     border-bottom: 1px solid rgb(222, 225, 243);
 }
 
-.headerOpen{
+.headerOpen {
     transition: 0.25s;
-    filter:none !important;
+    filter: none !important;
 }
+
 .notification-not-opened {
     transition: 0.25s;
     height: 15px;
@@ -590,7 +850,7 @@ console.log(activeUser)
     align-self: flex-end;
     position: relative;
     right: 50px;
-    height: 100%;
+    height: 40px;
     width: auto;
 }
 
@@ -600,5 +860,4 @@ console.log(activeUser)
     color: rgb(156, 157, 160);
     font-weight: bold;
     background-color: rgb(243, 246, 250);
-}
-</style>
+}</style>
