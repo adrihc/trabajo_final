@@ -16,13 +16,19 @@
                     <img src="..\assets\Rectangle 2.png" alt="">
                     <span>New Message</span>
                 </div>
-                
+
                 <div class="body-header" id="buttons">
-                    <RouterLink to="/alerts"><button class="button-header" @click="activeMessageTab = MessageTab.INBOX">Inbox</button></RouterLink>
+                    <RouterLink to="/alerts">
+                        <button class="button-header" @click="activeMessageTab = MessageTab.INBOX"
+                            :class="{ focusedButton: activeMessageTab === MessageTab.INBOX }">Inbox</button>
+                    </RouterLink>
                     <img src="..\assets\Ellipse 1.png" alt="">
-                    <RouterLink to="/alerts/sent"><button class="button-header" @click="activeMessageTab = MessageTab.SENT">Sent</button></RouterLink>
+                    <RouterLink to="/alerts/sent">
+                        <button class="button-header" @click="activeMessageTab = MessageTab.SENT"
+                            :class="{ focusedButton: activeMessageTab === MessageTab.SENT }">Sent</button>
+                    </RouterLink>
                 </div>
-                
+
                 <div class="body-header" id="search-bar">
                     <input type="search" placeholder="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -177,9 +183,11 @@ textarea:focus {
     border: none;
     color: white;
     font-weight: bold;
-    box-shadow: 0px 0px 10px  rgb(46, 46, 46);
+    box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
-
+.focusedButton{
+    background-color: rgb(222, 225, 243) !important;
+}
 .activeNewMessageTab {
     display: flex !important;
     flex-direction: column;
@@ -406,9 +414,10 @@ textarea:focus {
     float: left;
 }
 
-.body-header#buttons button:focus {
-    background-color: rgb(222, 225, 243);
+.body-header#buttons button:hover {
+    background-color: rgb(195, 198, 216) !important;
 }
+
 
 .body-header#buttons img {
     order: 3;
@@ -458,5 +467,4 @@ textarea:focus {
     font-weight: bold;
     background-color: rgb(243, 246, 250);
 }
-
 </style>
