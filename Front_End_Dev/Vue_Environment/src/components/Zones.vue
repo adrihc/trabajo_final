@@ -64,10 +64,11 @@ import { ref } from 'vue';
 enum Tabs {
     CIRCLE,
     ALERTS,
-    CALENDAR
+    CALENDAR,
+    NONE
 }
 
-const activeTab = ref<Tabs>(Tabs.ALERTS)
+const activeTab = ref<Tabs>(Tabs.NONE)
 //defineProps({
 //    color: {
 //        type: String,
