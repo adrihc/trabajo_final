@@ -251,7 +251,6 @@ const activeUser = ref<Activation>(Activation.NONE)
 }
 
 .active {
-    @click="activeUser = Activation.NONE"
     cursor: pointer;
     display: flex;
     flex-direction: row;
