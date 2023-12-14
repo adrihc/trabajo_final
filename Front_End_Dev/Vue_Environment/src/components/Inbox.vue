@@ -146,8 +146,6 @@
             </Transition>
         </div>
 
-        <div v-if="activeUser === Activation.ARTURO" @click="activeUser = Activation.NONE" class="none"></div>
-
         <Transition name="msgAnimation">
             <div v-if="activeUser === Activation.ARTURO" class="displayed">
                 <h3>Hi Friend!!!</h3>
