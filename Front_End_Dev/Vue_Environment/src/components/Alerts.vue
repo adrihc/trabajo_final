@@ -33,10 +33,11 @@
                 </div>
             </div>
 
-            <div class="alerts-body" id="messages" :class="{ activeMessageTab: activeMessageTab === MessageTab.INBOX }">
+            <div class="alerts-body" id="messages" :class="{ activeMessageTab: activeMessageTab === MessageTab.INBOX}">
 
-                <div class="message" @click="activeUser = Activation.JOHN"
-                    :class="{ active: activeUser === Activation.JOHN }">
+                <div class="message" :class="{ active: activeUser === Activation.JOHN }">
+                    <div v-if="activeUser != Activation.JOHN" @click="activeUser = Activation.JOHN" class="message-activation"></div>
+                    <div v-if="activeUser === Activation.JOHN" @click="activeUser = Activation.NONE" class="none"></div>
                     <input type="checkbox" class="message-content" id="checkbox-message">
                     <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
                         :class="{ headerOpen: activeUser === Activation.JOHN }">
@@ -66,8 +67,9 @@
                     </div>
                 </Transition>
 
-                <div class="message" @click="activeUser = Activation.RICHARD"
-                    :class="{ active: activeUser === Activation.RICHARD }">
+                <div class="message" :class="{ active: activeUser === Activation.RICHARD }">
+                    <div v-if="activeUser != Activation.RICHARD" @click="activeUser = Activation.RICHARD" class="message-activation"></div>
+                    <div v-if="activeUser === Activation.RICHARD" @click="activeUser = Activation.NONE" class="none"></div>
                     <input type="checkbox" class="message-content" id="checkbox-message">
                     <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
                         :class="{ headerOpen: activeUser === Activation.RICHARD }">
@@ -80,6 +82,7 @@
                     </Transition>
                     <div class="flecha"></div>
                 </div>
+
                 <Transition name="msgAnimation">
                     <div v-if="activeUser === Activation.RICHARD" class="displayed">
                         <h3>Hi Friend!!!</h3>
@@ -96,8 +99,10 @@
                         </div>
                     </div>
                 </Transition>
-                <div class="message" @click="activeUser = Activation.ELISABETH"
-                    :class="{ active: activeUser === Activation.ELISABETH }">
+
+                <div class="message" :class="{ active: activeUser === Activation.ELISABETH }">
+                    <div v-if="activeUser != Activation.ELISABETH" @click="activeUser = Activation.ELISABETH" class="message-activation"></div>
+                    <div v-if="activeUser === Activation.ELISABETH" @click="activeUser = Activation.NONE" class="none"></div>
                     <input type="checkbox" class="message-content" id="checkbox-message">
                     <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
                         :class="{ headerOpen: activeUser === Activation.ELISABETH }">
@@ -126,8 +131,10 @@
                         </div>
                     </div>
                 </Transition>
-                <div class="message" @click="activeUser = Activation.SARAH"
-                    :class="{ active: activeUser === Activation.SARAH }">
+
+                <div class="message" :class="{ active: activeUser === Activation.SARAH }">
+                    <div v-if="activeUser != Activation.SARAH" @click="activeUser = Activation.SARAH" class="message-activation"></div>
+                    <div v-if="activeUser === Activation.SARAH" @click="activeUser = Activation.NONE" class="none"></div>
                     <input type="checkbox" class="message-content" id="checkbox-message">
                     <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
                         :class="{ headerOpen: activeUser === Activation.SARAH }">
@@ -139,6 +146,7 @@
                             :class="{ desplegada: activeUser === Activation.SARAH }">&#10095;</span>
                     </Transition>
                 </div>
+
                 <Transition name="msgAnimation">
                     <div v-if="activeUser === Activation.SARAH" class="displayed">
                         <h3>Hi Friend!!!</h3>
@@ -156,8 +164,9 @@
                     </div>
                 </Transition>
 
-                <div class="message" @click="activeUser = Activation.ARTURO"
-                    :class="{ active: activeUser === Activation.ARTURO }">
+                <div class="message" :class="{ active: activeUser === Activation.ARTURO }">
+                    <div v-if="activeUser != Activation.ARTURO" @click="activeUser = Activation.ARTURO" class="message-activation"></div>
+                    <div v-if="activeUser === Activation.ARTURO" @click="activeUser = Activation.NONE" class="none"></div>
                     <input type="checkbox" class="message-content" id="checkbox-message">
                     <img src="..\assets\Ellipse 1.png" alt="" class="notification-not-opened"
                         :class="{ headerOpen: activeUser === Activation.ARTURO }">
@@ -169,6 +178,9 @@
                             :class="{ desplegada: activeUser === Activation.ARTURO }">&#10095;</span>
                     </Transition>
                 </div>
+
+                <div v-if="activeUser === Activation.ARTURO" @click="activeUser = Activation.NONE" class="none"></div>
+
                 <Transition name="msgAnimation">
                     <div v-if="activeUser === Activation.ARTURO" class="displayed">
                         <h3>Hi Friend!!!</h3>
@@ -384,18 +396,19 @@ enum Activation {
     RICHARD,
     ELISABETH,
     SARAH,
-    ARTURO
+    ARTURO,
+    NONE
 }
-const activeUser = ref<Activation>(Activation.JOHN)
+const activeUser = ref<Activation>(Activation.NONE)
 </script>
 <style scoped>
 /* Zona de New message, recolocar más tarde*/
 .newMessageAnimation-enter-active {
-    animation: newMessageFade 0.75s;
+    animation: newMessageFade 1s;
 }
 
 .newMessageAnimation-leave-active {
-    animation: newMessageFade 0.35s reverse;
+    animation: newMessageFade 0.5s reverse;
 }
 
 @keyframes newMessageFade {
@@ -439,9 +452,9 @@ const activeUser = ref<Activation>(Activation.JOHN)
 }
 
 .msgAnimation-leave-active {
-    animation: msgAnim 0.15s reverse;
+    animation: msgAnim 0.2s reverse;
     transform-origin: top;
-    transition: transform 0.15s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 @keyframes msgAnim {
@@ -466,6 +479,8 @@ const activeUser = ref<Activation>(Activation.JOHN)
     flex-direction: column;
     width: 100%;
     height: 525px;
+    border-radius: 15px 20px 20px 20px;
+    box-shadow: 0px 0px 10px black;
 }
 
 .input-zone input,
@@ -497,6 +512,7 @@ textarea:focus {
     padding-left: 10px;
     height: 100%;
     resize: none;
+
 }
 
 .buttons-new-message {
@@ -511,6 +527,7 @@ textarea:focus {
     border: none;
     color: rgb(20, 129, 102);
     font-weight: bold;
+    box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
 
 .new-message-button#cancel {
@@ -520,6 +537,7 @@ textarea:focus {
     border: none;
     color: white;
     font-weight: bold;
+    box-shadow: 0px 0px 10px  rgb(46, 46, 46);
 }
 
 .activeNewMessageTab {
@@ -798,6 +816,7 @@ textarea:focus {
 }
 
 .active {
+    @click="activeUser = Activation.NONE"
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -953,4 +972,17 @@ textarea:focus {
     color: rgb(156, 157, 160);
     font-weight: bold;
     background-color: rgb(243, 246, 250);
-}</style>
+}
+.message-activation{
+    cursor: pointer;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+}
+.none {
+    cursor: pointer;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+}
+</style>
