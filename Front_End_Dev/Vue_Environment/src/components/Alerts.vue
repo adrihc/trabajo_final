@@ -6,7 +6,6 @@
         </div>
 
         <!-- Body-Alerts and messaging -->
-
         <div class="slicer-alert-content" id="alert-body">
             <div class="alerts-body" id="alerts-body-header">
                 <div class="body-header" id="checkbox-space">
@@ -35,6 +34,7 @@
             </div>
 
             <div class="alerts-body" id="messages" :class="{ activeMessageTab: activeMessageTab === MessageTab.INBOX }">
+
                 <div class="message" @click="activeUser = Activation.JOHN"
                     :class="{ active: activeUser === Activation.JOHN }">
                     <input type="checkbox" class="message-content" id="checkbox-message">
@@ -49,21 +49,22 @@
                     </Transition>
                 </div>
 
-
-                <div class="content" :class="{ displayed: activeUser === Activation.JOHN }">
-                    <h3>Hi Friend!!!</h3>
-                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                    </span>
-                    <div class="message-body-elements" id="message-buttons">
-                        <button class="message-body" id="reply">REPLY</button>
-                        <button class="message-body" id="delete">DELETE</button>
+                <Transition name="msgAnimation">
+                    <div v-if="activeUser === Activation.JOHN" class="displayed">
+                        <h3>Hi Friend!!!</h3>
+                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                        </span>
+                        <div class="message-body-elements" id="message-buttons">
+                            <button class="message-body" id="reply">REPLY</button>
+                            <button class="message-body" id="delete">DELETE</button>
+                        </div>
                     </div>
-                </div>
+                </Transition>
 
                 <div class="message" @click="activeUser = Activation.RICHARD"
                     :class="{ active: activeUser === Activation.RICHARD }">
@@ -79,22 +80,22 @@
                     </Transition>
                     <div class="flecha"></div>
                 </div>
-
-                <div class="content" :class="{ displayed: activeUser === Activation.RICHARD }">
-                    <h3>Hi Friend!!!</h3>
-                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                    </span>
-                    <div class="message-body-elements" id="message-buttons">
-                        <button class="message-body" id="reply">REPLY</button>
-                        <button class="message-body" id="delete">DELETE</button>
+                <Transition name="msgAnimation">
+                    <div v-if="activeUser === Activation.RICHARD" class="displayed">
+                        <h3>Hi Friend!!!</h3>
+                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                        </span>
+                        <div class="message-body-elements" id="message-buttons">
+                            <button class="message-body" id="reply">REPLY</button>
+                            <button class="message-body" id="delete">DELETE</button>
+                        </div>
                     </div>
-                </div>
-
+                </Transition>
                 <div class="message" @click="activeUser = Activation.ELISABETH"
                     :class="{ active: activeUser === Activation.ELISABETH }">
                     <input type="checkbox" class="message-content" id="checkbox-message">
@@ -109,21 +110,22 @@
                     </Transition>
                 </div>
 
-                <div class="content" :class="{ displayed: activeUser === Activation.ELISABETH }">
-                    <h3>Hi Friend!!!</h3>
-                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                    </span>
-                    <div class="message-body-elements" id="message-buttons">
-                        <button class="message-body" id="reply">REPLY</button>
-                        <button class="message-body" id="delete">DELETE</button>
+                <Transition name="msgAnimation">
+                    <div v-if="activeUser === Activation.ELISABETH" class="displayed">
+                        <h3>Hi Friend!!!</h3>
+                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                        </span>
+                        <div class="message-body-elements" id="message-buttons">
+                            <button class="message-body" id="reply">REPLY</button>
+                            <button class="message-body" id="delete">DELETE</button>
+                        </div>
                     </div>
-                </div>
-
+                </Transition>
                 <div class="message" @click="activeUser = Activation.SARAH"
                     :class="{ active: activeUser === Activation.SARAH }">
                     <input type="checkbox" class="message-content" id="checkbox-message">
@@ -137,22 +139,22 @@
                             :class="{ desplegada: activeUser === Activation.SARAH }">&#10095;</span>
                     </Transition>
                 </div>
-
-                <div class="content" :class="{ displayed: activeUser === Activation.SARAH }">
-                    <h3>Hi Friend!!!</h3>
-                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                    </span>
-                    <div class="message-body-elements" id="message-buttons">
-                        <button class="message-body" id="reply">REPLY</button>
-                        <button class="message-body" id="delete">DELETE</button>
+                <Transition name="msgAnimation">
+                    <div v-if="activeUser === Activation.SARAH" class="displayed">
+                        <h3>Hi Friend!!!</h3>
+                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                        </span>
+                        <div class="message-body-elements" id="message-buttons">
+                            <button class="message-body" id="reply">REPLY</button>
+                            <button class="message-body" id="delete">DELETE</button>
+                        </div>
                     </div>
-                </div>
-
+                </Transition>
 
                 <div class="message" @click="activeUser = Activation.ARTURO"
                     :class="{ active: activeUser === Activation.ARTURO }">
@@ -167,22 +169,22 @@
                             :class="{ desplegada: activeUser === Activation.ARTURO }">&#10095;</span>
                     </Transition>
                 </div>
-
-                <div class="content" :class="{ displayed: activeUser === Activation.ARTURO }">
-                    <h3>Hi Friend!!!</h3>
-                    <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
-                        propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
-                        ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
-                        colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
-                        culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
-                        consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
-                    </span>
-                    <div class="message-body-elements" id="message-buttons">
-                        <button class="message-body" id="reply">REPLY</button>
-                        <button class="message-body" id="delete">DELETE</button>
+                <Transition name="msgAnimation">
+                    <div v-if="activeUser === Activation.ARTURO" class="displayed">
+                        <h3>Hi Friend!!!</h3>
+                        <span>Lorem ipsum dolor sit amet dolorem proident utilitatis magnus agris. Abutebatur architecto
+                            propter ut materia. Quam quo aliquip, oficii voluptatem. Qui pariatur officii eos. <br>Lorem
+                            ipsum dolor sit amet com tenetur animi. Et laboris aut apexerat fugiat. Ipsa amet quoddam
+                            colebatu proper. Qui tempore et magna sibi. Id ipsum deinde, repellat minim. Mollit odit
+                            culpa qui aut. Adipsci vel delectus, pariatur propagabant. Consequatur sibi vero, voluptate
+                            consequatur. Ipsa colebatur et, pariatur repellendus. Dolor ullam consequatur id.
+                        </span>
+                        <div class="message-body-elements" id="message-buttons">
+                            <button class="message-body" id="reply">REPLY</button>
+                            <button class="message-body" id="delete">DELETE</button>
+                        </div>
                     </div>
-                </div>
-
+                </Transition>
 
                 <div class="alerts-body" id="previous">
                     <button>5 Previous Messages</button>
@@ -346,27 +348,24 @@
 
             </div>
         </div>
-
     </div>
 
     <Transition name="bgAnimation">
-        <div v-if="show" class="blackBackground"
-            @click="show = false"></div>
+        <div v-if="show" class="blackBackground" @click="show = false"></div>
     </Transition>
     <Transition name="newMessageAnimation">
-    <div v-if="show" class="activeNewMessageTab">
-        <div class="input-zone">
-            <input type="text" placeholder="example@gmail.com" class="input-top">
-            <input type="text" placeholder="Subject" >
-            <textarea name="" id="" cols="30" rows="10" class="input-bot" placeholder="Your text here..."></textarea>
+        <div v-if="show" class="activeNewMessageTab">
+            <div class="input-zone">
+                <input type="text" placeholder="example@gmail.com" class="input-top">
+                <input type="text" placeholder="Subject">
+                <textarea name="" id="" cols="30" rows="10" class="input-bot" placeholder="Your text here..."></textarea>
 
-        </div>
+            </div>
             <div class="buttons-new-message">
                 <button class="new-message-button" id="send">Send</button>
-                <button class="new-message-button" id="cancel"
-                    @click="show = false">Cancel</button>
+                <button class="new-message-button" id="cancel" @click="show = false">Cancel</button>
             </div>
-    </div>
+        </div>
     </Transition>
 </template>
 
@@ -391,33 +390,70 @@ const activeUser = ref<Activation>(Activation.JOHN)
 </script>
 <style scoped>
 /* Zona de New message, recolocar más tarde*/
-.newMessageAnimation-enter-active{
+.newMessageAnimation-enter-active {
     animation: newMessageFade 0.75s;
 }
-.newMessageAnimation-leave-active{
+
+.newMessageAnimation-leave-active {
     animation: newMessageFade 0.35s reverse;
 }
+
 @keyframes newMessageFade {
-    0%{
-        opacity: 0%;    
+    0% {
+        opacity: 0%;
     }
-    100%{
+
+    100% {
         opacity: 100%;
-   }
+    }
 }
-.bgAnimation-enter-active{
+
+.bgAnimation-enter-active {
     animation: bgFade 0.75s;
 }
-.bgAnimation-leave-active{
+
+.bgAnimation-leave-active {
     animation: bgFade 0.35s reverse;
 }
+
 @keyframes bgFade {
-    0%{
-        opacity: 0%;    
+    0% {
+        opacity: 0%;
     }
-    50%{
+
+    50% {
         opacity: 50%;
-   }
+    }
+}
+
+.msgAnimation-enter,
+.msgAnimation-leave-to {
+    transform: scaleY(1);
+
+}
+
+.msgAnimation-enter-active {
+    animation: msgAnim 0.5s;
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+}
+
+.msgAnimation-leave-active {
+    animation: msgAnim 0.15s reverse;
+    transform-origin: top;
+    transition: transform 0.15s ease-in-out;
+}
+
+@keyframes msgAnim {
+    0% {
+        transform: scaleY(0);
+        height: 0px;
+    }
+
+    100% {
+        transform: scaleY(1);
+        height: 270px;
+    }
 }
 
 .new-message-tab {
@@ -438,21 +474,25 @@ textarea {
     border: 0;
     font-size: 17px;
 }
-.input-zone input{
+
+.input-zone input {
     height: 50px;
     padding-left: 10px;
 }
 
-.input-zone input,textarea:focus{
-    outline: none ;
+.input-zone input,
+textarea:focus {
+    outline: none;
 }
 
-.input-top{
+.input-top {
     border-radius: 15px 20px 0px 0px;
 }
-.input-bot{
+
+.input-bot {
     border-radius: 0px 0px 20px 20px;
 }
+
 .input-zone textarea {
     padding-left: 10px;
     height: 100%;
@@ -680,11 +720,13 @@ textarea {
 }
 
 .body-header#new-message img {
+    cursor: pointer;
     height: 100%;
     width: 190px;
 }
 
 .body-header#new-message span {
+    cursor: pointer;
     position: absolute;
     color: white;
     padding-left: 5%;
@@ -814,15 +856,13 @@ textarea {
 /* Message opened - Body */
 
 .content {
-    transition: 1s;
+    transition: 1s !important;
     display: none;
 }
 
 .displayed {
-    transition: 1s !important;
     display: flex !important;
     flex-direction: column;
-    align-items: s;
     background-color: rgb(243, 246, 250);
     border-bottom: 1px solid rgb(222, 225, 243);
     width: 100%;
@@ -900,8 +940,9 @@ textarea {
 
 .alerts-body#previous {
     align-self: flex-end;
-    position: relative;
-    right: 50px;
+    position: absolute;
+    bottom: 0px;
+    right: 30px;
     height: 40px;
     width: auto;
 }
@@ -912,5 +953,4 @@ textarea {
     color: rgb(156, 157, 160);
     font-weight: bold;
     background-color: rgb(243, 246, 250);
-}
-</style>
+}</style>
