@@ -18,15 +18,11 @@
                 </div>
 
                 <div class="body-header" id="buttons">
-                    <RouterLink to="/alerts">
-                        <button class="button-header" @click="activeMessageTab = MessageTab.INBOX"
-                            :class="{ focusedButton: activeMessageTab === MessageTab.INBOX }">Inbox</button>
-                    </RouterLink>
+                    <button class="button-header" @click="activeMessageTab = MessageTab.INBOX"
+                        :class="{ focusedButton: activeMessageTab === MessageTab.INBOX }">Inbox</button>
                     <img src="..\assets\Ellipse 1.png" alt="">
-                    <RouterLink to="/alerts/sent">
-                        <button class="button-header" @click="activeMessageTab = MessageTab.SENT"
-                            :class="{ focusedButton: activeMessageTab === MessageTab.SENT }">Sent</button>
-                    </RouterLink>
+                    <button class="button-header" @click="activeMessageTab = MessageTab.SENT"
+                        :class="{ focusedButton: activeMessageTab === MessageTab.SENT }">Sent</button>
                 </div>
 
                 <div class="body-header" id="search-bar">
@@ -38,7 +34,11 @@
                     </svg>
                 </div>
             </div>
-            <RouterView></RouterView>
+            <Inbox v-if="activeMessageTab === MessageTab.INBOX"></Inbox>
+
+            <Sent v-if="activeMessageTab === MessageTab.SENT" v-for="message in sentMessages" :subject="message.subject"
+                :msg="message.msg" :receiver="message.receiver">
+            </Sent>
 
         </div>
     </div>
@@ -49,13 +49,14 @@
     <Transition name="newMessageAnimation">
         <div v-if="show" class="activeNewMessageTab">
             <div class="input-zone">
-                <input type="text" placeholder="example@gmail.com" class="input-top">
-                <input type="text" placeholder="Subject">
-                <textarea name="" id="" cols="30" rows="10" class="input-bot" placeholder="Your text here..."></textarea>
+                <input type="text" placeholder="example@gmail.com" class="input-top" v-model="receiver">
+                <input type="text" placeholder="Subject" v-model="subject">
+                <textarea name="" id="" cols="30" rows="10" class="input-bot" placeholder="Your text here..."
+                    v-model="msg"></textarea>
 
             </div>
             <div class="buttons-new-message">
-                <button class="new-message-button" id="send">Send</button>
+                <button class="new-message-button" id="send" @click="addMessage">Send</button>
                 <button class="new-message-button" id="cancel" @click="show = false">Cancel</button>
             </div>
         </div>
@@ -63,24 +64,40 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
+import Inbox from './Inbox.vue';
+import Sent from './Sent.vue'
 
+const receiver = ref<string>("");
+const subject = ref<string>("");
+const msg = ref<string>("");
 const show = ref(false)
+var sentMessages = reactive<Array<MessageObject>>([])
 
 enum MessageTab {
     INBOX,
     SENT
 }
+
 const activeMessageTab = ref<MessageTab>(MessageTab.INBOX)
-enum Activation {
-    JOHN,
-    RICHARD,
-    ELISABETH,
-    SARAH,
-    ARTURO,
-    NONE
+
+type MessageObject = {
+    msg: string;
+    subject: string;
+    receiver: string;
 }
-const activeUser = ref<Activation>(Activation.NONE)
+
+
+function addMessage() {
+    let nwMsg: MessageObject = {
+        msg: msg.value,
+        subject: subject.value,
+        receiver: receiver.value
+    }
+    sentMessages.unshift(nwMsg)
+    console.log(sentMessages)
+}
+
 </script>
 <style scoped>
 /* Zona de New message, recolocar más tarde*/
@@ -168,6 +185,7 @@ textarea:focus {
 }
 
 .new-message-button#send {
+    cursor: pointer;
     background-color: rgb(31, 219, 172);
     width: 90px;
     border: none;
@@ -175,8 +193,8 @@ textarea:focus {
     font-weight: bold;
     box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
-
 .new-message-button#cancel {
+    cursor: pointer;
     margin-left: 20px;
     background-color: rgb(255, 94, 94);
     width: 90px;
@@ -185,9 +203,11 @@ textarea:focus {
     font-weight: bold;
     box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
-.focusedButton{
+
+.focusedButton {
     background-color: rgb(222, 225, 243) !important;
 }
+
 .activeNewMessageTab {
     display: flex !important;
     flex-direction: column;
@@ -376,7 +396,6 @@ textarea:focus {
     display: flex;
     flex-direction: row;
     align-items: center;
-    cursor: default;
 }
 
 .body-header#new-message img {
@@ -385,11 +404,15 @@ textarea:focus {
     width: 190px;
 }
 
+.body-header#new-message:hover {
+    filter: saturate(1.5);
+}
+
 .body-header#new-message span {
     cursor: pointer;
     position: absolute;
     color: white;
-    padding-left: 5%;
+    padding-left: 40px;
 }
 
 
