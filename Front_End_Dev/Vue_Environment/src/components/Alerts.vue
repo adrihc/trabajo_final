@@ -193,6 +193,10 @@ textarea:focus {
     font-weight: bold;
     box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
+#send:hover{
+    background-color: rgb(22, 143, 113);
+    color: rgb(15, 95, 75);
+}
 .new-message-button#cancel {
     cursor: pointer;
     margin-left: 20px;
@@ -203,7 +207,10 @@ textarea:focus {
     font-weight: bold;
     box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
-
+#cancel:hover{
+    background-color: rgb(219, 69, 69);
+    color: rgb(228, 215, 215);
+}
 .focusedButton {
     background-color: rgb(222, 225, 243) !important;
 }
