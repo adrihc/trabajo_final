@@ -4,7 +4,6 @@
             <img src="..\assets\warnings-off2.png" alt="">
             <span>ALERTS AND MESSAGING</span>
         </div>
-
         <!-- Body-Alerts and messaging -->
         <div class="slicer-alert-content" id="alert-body">
             <div class="alerts-body" id="alerts-body-header">
@@ -26,7 +25,7 @@
                 </div>
 
                 <div class="body-header" id="search-bar">
-                    <input type="search" placeholder="Search">
+                    <input type="search" placeholder="Search" v-model="search" v-on:keyup="filterMessages">
                     <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -36,10 +35,12 @@
             </div>
             <Inbox v-if="activeMessageTab === MessageTab.INBOX"></Inbox>
 
-            <Sent v-if="activeMessageTab === MessageTab.SENT" v-for="message in sentMessages" :subject="message.subject"
-                :msg="message.msg" :receiver="message.receiver">
+            <Sent v-if="activeMessageTab === MessageTab.SENT && search.length === 0" v-for="message in sentMessages"
+                :subject="message.subject" :msg="message.msg" :receiver="message.receiver">
             </Sent>
-
+            <Sent v-if="activeMessageTab === MessageTab.SENT && search.length > 0 && filteredMessages.length > 0" v-for="message in filteredMessages"
+                :subject="message.subject" :msg="message.msg" :receiver="message.receiver">
+            </Sent>
         </div>
     </div>
 
@@ -67,18 +68,17 @@
 import { reactive, ref } from 'vue';
 import Inbox from './Inbox.vue';
 import Sent from './Sent.vue'
-
+const search = ref<string>("");
 const receiver = ref<string>("");
 const subject = ref<string>("");
 const msg = ref<string>("");
 const show = ref(false)
 var sentMessages = reactive<Array<MessageObject>>([])
-
+var filteredMessages = reactive<Array<MessageObject>>([])
 enum MessageTab {
     INBOX,
     SENT
 }
-
 const activeMessageTab = ref<MessageTab>(MessageTab.INBOX)
 
 type MessageObject = {
@@ -95,9 +95,20 @@ function addMessage() {
         receiver: receiver.value
     }
     sentMessages.unshift(nwMsg)
-    console.log(sentMessages)
 }
 
+function filterMessages() {
+
+    if (filteredMessages.length >= 0) {
+        filteredMessages = reactive<Array<MessageObject>>([])
+    }
+    for (let i in sentMessages) {
+        if (sentMessages[i].receiver.includes(search.value) || sentMessages[i].subject.includes(search.value) || sentMessages[i].msg.includes(search.value)) {
+            filteredMessages.push(sentMessages[i])
+        }
+    }
+
+}
 </script>
 <style scoped>
 /* Zona de New message, recolocar más tarde*/
@@ -193,10 +204,12 @@ textarea:focus {
     font-weight: bold;
     box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
-#send:hover{
+
+#send:hover {
     background-color: rgb(22, 143, 113);
     color: rgb(15, 95, 75);
 }
+
 .new-message-button#cancel {
     cursor: pointer;
     margin-left: 20px;
@@ -207,10 +220,12 @@ textarea:focus {
     font-weight: bold;
     box-shadow: 0px 0px 10px rgb(46, 46, 46);
 }
-#cancel:hover{
+
+#cancel:hover {
     background-color: rgb(219, 69, 69);
     color: rgb(228, 215, 215);
 }
+
 .focusedButton {
     background-color: rgb(222, 225, 243) !important;
 }
@@ -496,5 +511,4 @@ textarea:focus {
     color: rgb(156, 157, 160);
     font-weight: bold;
     background-color: rgb(243, 246, 250);
-}
-</style>
+}</style>
