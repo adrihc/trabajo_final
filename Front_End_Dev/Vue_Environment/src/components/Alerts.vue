@@ -65,7 +65,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { VueElement, reactive, ref } from 'vue';
 import Inbox from './Inbox.vue';
 import Sent from './Sent.vue'
 const search = ref<string>("");
@@ -98,16 +98,12 @@ function addMessage() {
 }
 
 function filterMessages() {
-
-    if (filteredMessages.length >= 0) {
-        filteredMessages = reactive<Array<MessageObject>>([])
-    }
+    filteredMessages.length = 0 
     for (let i in sentMessages) {
         if (sentMessages[i].receiver.includes(search.value) || sentMessages[i].subject.includes(search.value) || sentMessages[i].msg.includes(search.value)) {
             filteredMessages.push(sentMessages[i])
         }
     }
-
 }
 </script>
 <style scoped>
